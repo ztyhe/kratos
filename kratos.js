@@ -92,7 +92,8 @@ client.on('messageCreate', async message => {
         const user_name = Object.keys(USER_IDS).find(key => USER_IDS[key] === user_id);
 
         const now = Date.now();
-        if (lastReplyTime[user_id] && now - lastReplyTime[user_id] < 10000) return;
+        // Увеличиваем кулдаун до 60 секунд (60000 миллисекунд)
+        if (lastReplyTime[user_id] && now - lastReplyTime[user_id] < 60000) return;
         lastReplyTime[user_id] = now;
 
         // Выбор ответа
